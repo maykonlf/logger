@@ -11,7 +11,7 @@ go get -u github.com/maykonlf/logger
 ## Quick Start
 ```go
 log := logger.NewLoggerWithLevel(logger.JSONFormat, logger.WarnLevel)
-defer l.Sync()
+defer log.Sync()
 
 log.Debug("debug log", "key", "value")
 log.Info("info log", "key", "value")
