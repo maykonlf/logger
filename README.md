@@ -1,4 +1,6 @@
 # logger
+![lint](https://github.com/maykonlf/logger/workflows/lint/badge.svg)
+
 Go structured logger compatible with stackdriver build with zap
 
 ## Installation
@@ -22,3 +24,4 @@ log.Fatal("fatal log", "key", "value")
 
 ## Dependencies
 - [Uber's zap](https://github.com/uber-go/zap)
+!
