@@ -17,7 +17,7 @@ var encoderConfig = zapcore.EncoderConfig{
 	LevelKey:       "severity",
 	NameKey:        "logger",
 	CallerKey:      zapcore.OmitKey,
-	FunctionKey:    "function",
+	FunctionKey:    zapcore.OmitKey,
 	MessageKey:     "message",
 	StacktraceKey:  "stacktrace",
 	LineEnding:     zapcore.DefaultLineEnding,
