@@ -5,7 +5,7 @@ Go structured logger compatible with stackdriver build with zap
 
 ## Installation
 ```bash
-go get -u github.com/maykonlf/logger@v1.0.2
+go get -u github.com/maykonlf/logger@v1.0.0
 ```
 
 ## Quick Start
