@@ -5,12 +5,12 @@ Go structured logger compatible with stackdriver build with zap
 
 ## Installation
 ```bash
-go get -u github.com/maykonlf/logger@v1.0.1
+go get -u github.com/maykonlf/logger@v1.0.2
 ```
 
 ## Quick Start
 ```go
-log := logger.NewLoggerWithLevel(logger.JSONFormat, logger.WarnLevel)
+log := logger.NewLoggerWithLevel(logger.JSONEncoding, logger.DebugLevel)
 defer log.Sync()
 
 log.Debug("debug log", "key", "value")

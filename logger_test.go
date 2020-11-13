@@ -1,12 +1,13 @@
 package logger_test
 
 import (
-	"github.com/maykonlf/logger"
 	"testing"
+
+	"github.com/maykonlf/logger"
 )
 
 func BenchmarkLogger(b *testing.B) {
-	l := logger.NewLoggerWithLevel(logger.JSONFormat, logger.InfoLevel)
+	l := logger.NewLoggerWithLevel(logger.JSONEncoding, logger.InfoLevel)
 
 	for i := 0; i < b.N; i++ {
 		l.Info("my info msg")
