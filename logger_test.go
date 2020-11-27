@@ -250,8 +250,7 @@ func ExampleLoggerImp_Sync() {
 }
 
 func ExampleNil() {
-	var log logger.Logger
-	log = logger.Nil()
+	log := logger.Nil()
 
 	log.Info("silent info message")
 	log.Debug("silent debug message")
