@@ -71,41 +71,71 @@ func NewLoggerWithLevel(encoding Encoding, level Level) Logger {
 	}
 
 	l, _ := config.Build()
-	return &logger{logger: l.Sugar()}
+	return &LoggerImp{logger: l.Sugar()}
 }
 
-type logger struct {
+type LoggerImp struct {
 	logger *zap.SugaredLogger
 }
 
-func (l *logger) Debug(msg string, keysAndValues ...interface{}) {
+// Debug logs a message with some additional context.
+// The variadic key-value pairs are treated as they are in With.
+//
+// Assumes log severity as 'DEBUG'
+func (l *LoggerImp) Debug(msg string, keysAndValues ...interface{}) {
 	l.logger.Debugw(msg, keysAndValues...)
 }
 
-func (l *logger) Info(msg string, keysAndValues ...interface{}) {
+// Info logs a message with some additional context.
+// The variadic key-value pairs are treated as they are in With.
+//
+// Assumes log severity as 'INFO'
+func (l *LoggerImp) Info(msg string, keysAndValues ...interface{}) {
 	l.logger.Infow(msg, keysAndValues...)
 }
 
-func (l *logger) Warn(msg string, keysAndValues ...interface{}) {
+// Warn logs a message with some additional context.
+// The variadic key-value pairs are treated as they are in With.
+//
+// Assumes log severity as 'WARNING'
+func (l *LoggerImp) Warn(msg string, keysAndValues ...interface{}) {
 	l.logger.Warnw(msg, keysAndValues...)
 }
 
-func (l *logger) Error(msg string, keysAndValues ...interface{}) {
+// Error logs a message with some additional context.
+// The variadic key-value pairs are treated as they are in With.
+//
+// Assumes log severity as 'ERROR' and includes the stacktrace.
+func (l *LoggerImp) Error(msg string, keysAndValues ...interface{}) {
 	l.logger.Errorw(msg, keysAndValues...)
 }
 
-func (l *logger) DPanic(msg string, keysAndValues ...interface{}) {
+// DPanic logs a message with some additional context.
+// In development, the logger then panics. (See DPanicLevel for details.)
+// The variadic key-value pairs are treated as they are in With.
+//
+//Assumes log severity as 'CRITICAL' and includes the stacktrace.
+func (l *LoggerImp) DPanic(msg string, keysAndValues ...interface{}) {
 	l.logger.DPanicw(msg, keysAndValues...)
 }
 
-func (l *logger) Panic(msg string, keysAndValues ...interface{}) {
+// Panic logs a message with some additional context, then panics.
+// The variadic key-value pairs are treated as they are in With.
+//
+//Assumes severity as 'ALERT' and includes the stacktrace.
+func (l *LoggerImp) Panic(msg string, keysAndValues ...interface{}) {
 	l.logger.Panicw(msg, keysAndValues...)
 }
 
-func (l *logger) Fatal(msg string, keysAndValues ...interface{}) {
+// Fatal logs a message with some additional context, then calls os.Exit.
+// The variadic key-value pairs are treated as they are in With.
+//
+// Assumes severity as 'EMERGENCY' and includes the stacktrace.
+func (l *LoggerImp) Fatal(msg string, keysAndValues ...interface{}) {
 	l.logger.Fatalw(msg, keysAndValues...)
 }
 
-func (l *logger) Sync() {
+// Sync flushes any buffered log entries.
+func (l *LoggerImp) Sync() {
 	_ = l.logger.Sync()
 }
